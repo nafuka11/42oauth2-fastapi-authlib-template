@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = {extras = ["all"], version = "*"}
+authlib = "*"
+httpx = "*"
+
+[dev-packages]
+black = "*"
+flake8 = "*"
+isort = "*"
+mypy = "*"
+
+[requires]
+python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true
+
+[scripts]
+lint = "bash -c 'black --check . && flake8 . && mypy . && isort --diff .'"
+format = "bash -c 'black . && isort .'"
+dev = "uvicorn main:app --reload"
